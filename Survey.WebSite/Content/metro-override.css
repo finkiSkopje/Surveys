@@ -1,0 +1,97 @@
+﻿.thumbnail.tile {
+    height: auto;
+    padding: 10px;
+    min-width: 115px;
+    text-align: left;
+    width: 100%;
+}
+
+    h1, h2, h3, .thumbnail.tile h3, .thumbnail.tile h4 {
+        margin-top: 0px;
+    }
+
+.expand-tile {
+    background: #2e8bcc;
+}
+
+.metro-tile {
+    opacity: 0;
+    margin: 0;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.checkbox:nth-child(2),
+.checkbox:nth-child(4) {
+    margin-top: -5px !important;
+}
+
+.checkbox .check:after {
+    margin-left: -5px !important;
+}
+
+.radio-style .radio:nth-child(1) {
+    margin-top: -5px;
+}
+
+.survey-info {
+    text-align: center;
+    font-weight: bold;
+}
+
+.survey-info-content {
+    display: inline-block;
+    text-align: left;
+}
+
+.survey-info-title {
+    font-size: 18px;
+    padding-bottom: 5px;
+}
+
+.page-inner-content {
+    margin: 4% auto;
+    text-align: center;
+}
+
+    .page-inner-content h1 {
+        padding-bottom: 30px;
+    }
+
+.btn-next {
+    padding-top: 50px;
+}
+
+    .btn-next a {
+        color: white !important;
+    }
+
+.close-btn-ic {
+    text-align: right;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-style {
+    display: inline-block;
+}
+
+.navbar-default {
+    background-color: rgb(248, 248, 248) !important;
+    border-color: rgb(231, 231, 231) !important;
+}
+
+    .navbar-default .navbar-nav > li > a {
+        color: #777777;
+    }
+
+body {
+    /*overflow: hidden;*/
+}
+
+.jumbotron-parent .jumbotron{
+    padding: 10px 50px;
+}

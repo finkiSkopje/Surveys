@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Најава";
+}
+
+<hr />
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-8">
+        <section>
+            <div style="display: @string.Format("{0}", ViewBag.error == true ? "inline-block":"none")" class="alert alert-danger">
+                <strong>Информација!</strong> Корисничкото име не постои во системот.
+            </div>
+            <div class="jumbotron">
+                <h3>Анкети</h3>
+                <p>
+                    Сервис за анкетирање
+                </p>
+                <p><a href="@ViewBag.casLogin" class="btn btn-primary btn-lg"><i class="fa fa-sign-in"></i>&nbsp;Најава</a></p>
+            </div>
+        </section> 
+    </div>
+    <div class="col-md-4">
+        @ViewBag.errMsg
+    </div>
+</div>
+
+

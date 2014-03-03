@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7dc111a7463c4c798f1ef44e90673a29" Name="Diagram1">
+        <EntityTypeShape EntityType="SurveysModel.Answer" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveysModel.ApplicationForm" Width="1.5" PointX="3.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveysModel.Question" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveysModel.QuestionType" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveysModel.Role" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveysModel.SemesterCours" Width="1.5" PointX="10.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveysModel.StudentCours" Width="1.5" PointX="12.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveysModel.SurveyCours" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveysModel.Survey" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveysModel.UserAnswer" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveysModel.User" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="SurveysModel.FK_Answers_Questions" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveysModel.FK_UserAnswers_Answers" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveysModel.FK_Questions_QuestionTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveysModel.FK_Questions_Surveys" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveysModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveysModel.FK_SemesterCourses_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveysModel.FK_StudentCourses_SemesterCourses" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveysModel.FK_SurveyCourses_SemesterCourses" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveysModel.FK_StudentCourses_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveysModel.FK_SurveyCourses_Surveys" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveysModel.FK_UserAnswers_SurveyCourses" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveysModel.ApplicationFormsRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SurveysModel.UserSurvey" Width="1.5" PointX="10.5" PointY="3" />
+        <AssociationConnector Association="SurveysModel.FK_UserSurveys_SurveyCourses" />
+        <AssociationConnector Association="SurveysModel.FK_UserSurveys_Users" />
+        <AssociationConnector Association="SurveysModel.FK_UserAnswers_Roles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

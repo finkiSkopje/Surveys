@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.WebSite", "Survey.WebSite\Survey.WebSite.csproj", "{1791DBAC-229C-4A5F-8636-3491D4F10276}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.Models", "Survey.Models\Survey.Models.csproj", "{A651C0D3-EFFD-4FB3-BB34-033A24F5976B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.DAL", "Survey.DAL\Survey.DAL.csproj", "{098ABF8C-41BD-4B1A-9F16-7B1EA200EAFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.Repositories", "Survey.Repositories\Survey.Repositories.csproj", "{C69AE777-272E-4F40-9C33-35A42423ADB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.Domain", "Survey.Domain\Survey.Domain.csproj", "{4E4C857C-5B8E-462F-9781-5061842ABDC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.Sync", "Survey.Sync\Survey.Sync.csproj", "{F7A680C6-BF39-40CE-A410-6C3ADEA7FA72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1791DBAC-229C-4A5F-8636-3491D4F10276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1791DBAC-229C-4A5F-8636-3491D4F10276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1791DBAC-229C-4A5F-8636-3491D4F10276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1791DBAC-229C-4A5F-8636-3491D4F10276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A651C0D3-EFFD-4FB3-BB34-033A24F5976B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A651C0D3-EFFD-4FB3-BB34-033A24F5976B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A651C0D3-EFFD-4FB3-BB34-033A24F5976B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A651C0D3-EFFD-4FB3-BB34-033A24F5976B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{098ABF8C-41BD-4B1A-9F16-7B1EA200EAFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{098ABF8C-41BD-4B1A-9F16-7B1EA200EAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{098ABF8C-41BD-4B1A-9F16-7B1EA200EAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{098ABF8C-41BD-4B1A-9F16-7B1EA200EAFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C69AE777-272E-4F40-9C33-35A42423ADB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C69AE777-272E-4F40-9C33-35A42423ADB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C69AE777-272E-4F40-9C33-35A42423ADB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C69AE777-272E-4F40-9C33-35A42423ADB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E4C857C-5B8E-462F-9781-5061842ABDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E4C857C-5B8E-462F-9781-5061842ABDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E4C857C-5B8E-462F-9781-5061842ABDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E4C857C-5B8E-462F-9781-5061842ABDC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A680C6-BF39-40CE-A410-6C3ADEA7FA72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A680C6-BF39-40CE-A410-6C3ADEA7FA72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A680C6-BF39-40CE-A410-6C3ADEA7FA72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A680C6-BF39-40CE-A410-6C3ADEA7FA72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal

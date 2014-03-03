@@ -1,0 +1,229 @@
+﻿@model Survey.WebSite.Models.StudentsSurveyModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.SurveyCourse.SemesterCours.CourseName</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/component.css" rel="stylesheet" />
+    <link href="~/Content/animations.css" rel="stylesheet" />
+    <link href="~/Content/metro-bootstrap-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/metro-override.css" rel="stylesheet" />
+</head>
+<body>
+    @using (Html.BeginForm("Survey", "Students", FormMethod.Post, new { @style = "height: 100%; width: 100%", @id = "form_survey" }))
+    {
+        <input type="hidden" name="SurveyId" value="@Model.SurveyId" />
+        <div id="pt-main" class="pt-perspective pt-main">
+            <div class="pt-page pt-page-1">
+                <div style="text-align: right; padding-top: 20px; padding-right: 20px;">
+                    <span class="close-btn-ic"><span class="fa fa-times-circle fa-3x"></span></span>
+                </div>
+                <div class="survey-info">
+                    <div class="survey-info-content">
+                        <div class="survey-info-title">@Model.SurveyCourse.Survey.Name</div>
+                        <div><strong>предмет:</strong> @Model.SurveyCourse.SemesterCours.CourseName</div>
+                        <div><strong>настава:</strong> @string.Format("{0} {1}", Model.SurveyCourse.SemesterCours.User.Name, Model.SurveyCourse.SemesterCours.User.Surname)</div>
+                        <div><strong>број на прашања: </strong> @string.Format("{0}", Model.SurveyCourse.Survey.Questions.Count())</div>
+                    </div>
+                </div>
+                <div class="page-inner-content">
+                    <div class="input-control select">
+                        <strong>Вежби </strong> @Html.DropDownList("TeacherId", Model.Assistants.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.NameSurname }))
+                    </div>
+                    <div class="btn-next">
+                        <a href="javascript:void(0)" class="btn btn-primary btn-lg next-page">Започни <span class="fa fa-angle-double-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            @{
+        int j = 0, i = 0, k = 0, z = 0, cc=0;
+        foreach (var item in Model.SurveyCourse.Survey.Questions)
+        {
+            <div class="pt-page @string.Format("pt-page-{0}", i % 2 == 0 ? "1":"2")">
+                <div style="text-align: right; padding-top: 20px; padding-right: 20px;">
+                    <span style="vertical-align: top; margin-right: 30px"><strong style="vertical-align: top;">@string.Format("прашање: {0}/{1}", ++cc, Model.SurveyCourse.Survey.Questions.Count())</strong></span>
+                    <span class="close-btn-ic"><span class="fa fa-times-circle fa-3x"></span></span>
+                </div>
+                <div class="survey-info">
+                    <div class="survey-info-content">
+                        <div class="survey-info-title">@Model.SurveyCourse.Survey.Name</div>
+                        <div><strong>предмет:</strong> @Model.SurveyCourse.SemesterCours.CourseName</div>
+                        <div><strong>настава:</strong> @string.Format("{0} {1}", Model.SurveyCourse.SemesterCours.User.Name, Model.SurveyCourse.SemesterCours.User.Surname)</div>
+                        <div><strong>вежби: </strong><span class="assistant_name"></span></div>
+                    </div>
+                </div>
+                <div class="page-inner-content">
+                    <h1>@item.Name</h1>
+
+                    @{
+            if (item.QuestionTypeId == 1)
+            {
+                <div class="input-control select">
+                    @if (item.Survey.TwoUsers == true)
+                    {<strong>Настава </strong>} @Html.DropDownList("UserAnswers[" + j.ToString() + "]", item.Answers.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }))
+                </div>
+
+                if (item.Survey.TwoUsers == true)
+                {
+                    <div class="input-control select">
+                        <strong style="margin-right: 10px">Вежби</strong> @Html.DropDownList("UserAnswersSecondUser[" + k.ToString() + "]", item.Answers.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }))
+                    </div>
+                }
+                j++;
+                k++;
+            }
+            else if (item.QuestionTypeId == 2)
+            {
+                <div class="checkbox-style">
+                    @if (item.Survey.TwoUsers == true)
+                    {<strong>Настава </strong>}
+                    @foreach (var subitem in item.Answers)
+                    {
+                        <div class="input-control input-control-metro checkbox" data-role="input-control">
+                            <label>
+                                @Html.CheckBox("UserAnswers[" + j.ToString() + "]", new { @value = subitem.Id })
+                                <span class="check"></span>
+                                @subitem.Name
+                            </label>
+                        </div>
+                        j++;
+                    }
+                </div>
+
+                if (item.Survey.TwoUsers == true)
+                {
+                    <div class="checkbox-style">
+                        <strong style="margin-right: 10px">Вежби</strong>
+                        @foreach (var subitem in item.Answers)
+                        {
+                            <div class="input-control input-control-metro checkbox" data-role="input-control">
+                                <label>
+                                    @Html.CheckBox("UserAnswersSecondUser[" + k.ToString() + "]", new { @value = subitem.Id })
+                                    <span class="check"></span>
+                                    @subitem.Name
+                                </label>
+                            </div>
+                            k++;
+                        }
+                    </div>
+                }
+            }
+            else if (item.QuestionTypeId == 3)
+            {
+                <div>
+                    @if (item.Survey.TwoUsers == true)
+                    {<strong>Настава </strong>}
+                    <div class="radio-style">
+                        @foreach (var subitem in item.Answers)
+                        {
+                            <div class="input-control radio default-style" data-role="input-control">
+                                <label>
+                                    <input type="radio" class="radio-item" name="UserAnswers[@j]" value="@subitem.Id" />
+                                    <span class="check"></span>
+                                    @subitem.Name
+                                </label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                        <div>
+                            <strong style="margin-right: 10px">Вежби </strong>
+                            <div class="radio-style">
+                                @if (item.Survey.TwoUsers == true)
+                                {
+                                    foreach (var subitem in item.Answers)
+                                    {
+                                        <div class="input-control radio default-style" data-role="input-control">
+                                            <label>
+                                                <input type="radio" class="radio-item" name="UserAnswersSecondUser[@k]" value="@subitem.Id" />
+                                                <span class="check"></span>
+                                                @subitem.Name
+                                            </label>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                                j++;
+                                k++;
+            }
+            else if (item.QuestionTypeId == 4)
+            {
+                <input type="hidden" name="UserAnswersString[@z].Id" value="@item.Answers.FirstOrDefault().Id" />
+                        <textarea style="width: 500px; height: 74px;" name="UserAnswersString[@z].Text"></textarea>
+                z++;
+            }
+                    }
+                    <div class="btn-next">
+                        <a href="javascript:void(0)" class="btn btn-primary btn-lg previous-page"><span class="fa fa-angle-double-left"></span> Назад</a>
+                        <a href="javascript:void(0)" class="btn btn-primary btn-lg next-page">Следно <span class="fa fa-angle-double-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            i++;
+        }
+            }
+
+            <div class="pt-page pt-page-1">
+                <div style="text-align: right; padding-top: 20px; padding-right: 20px;">
+                    <span class="close-btn-ic"><span class="fa fa-times-circle fa-3x"></span></span>
+                </div>
+                <div class="survey-info">
+                    <div class="survey-info-content">
+                        <div class="survey-info-title">@Model.SurveyCourse.Survey.Name</div>
+                        <div><strong>предмет:</strong> @Model.SurveyCourse.SemesterCours.CourseName</div>
+                        <div><strong>настава:</strong> @string.Format("{0} {1}", Model.SurveyCourse.SemesterCours.User.Name, Model.SurveyCourse.SemesterCours.User.Surname)</div>
+                        <div><strong>вежби: </strong><span class="assistant_name"></span></div>
+                        <div><strong>вкупно одговорени прашања: </strong><span class="num-questions-answered"></span>@string.Format("/{0}", Model.SurveyCourse.Survey.Questions.Count())</div>
+                    </div>
+                </div>
+                <div class="page-inner-content">
+                    <div class="input-control select">
+                        <h3>Анкетите се целосно анонимни. При одговарање на анкета се зачувуваат само одговорите, но не и кој ги одговорил.</h3>
+                    </div>
+                    <div class="btn-next">
+                        <a href="javascript:void(0)" class="btn btn-primary btn-lg previous-page"><span class="fa fa-angle-double-left"></span> Назад</a>
+                        <a href="javascript:document.getElementById('form_survey').submit();" class="btn btn-primary btn-lg next-page">Зачувај <span class="fa fa-save"></span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-page pt-page-close">
+                <img src="/Images/Update.png" />
+            </div>
+        </div>
+
+        <div class="pt-message">
+            <p>Вашиот пребарувач не е соодветен за оваа апликација. Ве молиме обидете се со друг пребарувач.</p>
+        </div>
+    }
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_close" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Информација</h4>
+                </div>
+                <div class="modal-body">
+                    Вашите одговори не се зачувани и нема да бидат земени во предвид.
+                </div>
+                <div class="modal-footer">
+                    <a style="color: white !important" href="javascript:void(0);" class="btn btn-primary btn-lg" data-dismiss="modal">Откажи <span class="fa fa-times"></span></a>
+                    <a style="color: white !important" href="javascript:void(0);" class="btn btn-primary btn-lg close-btn-ic-close">Продолжи <span class="fa fa-check-square-o"></span></a>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

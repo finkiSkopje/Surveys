@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Survey.Domain.SurveyCoursesEntity>
+
+@{
+    ViewBag.Title = "Анкети";
+}
+
+<link href="~/Content/metro-bootstrap.css" rel="stylesheet" />
+<link href="~/Content/metro-override.css" rel="stylesheet" />
+
+<div class="row tile-container">
+    <div class="jumbotron-parent">
+        <div class="jumbotron">
+            <div class="alert alert-info" style="font-size: 18px">
+                <strong>Напомена!</strong> Анкетите се целосно анонимни. При одговарање на анкета се зачувуваат само одговорите, но не и кој ги одговорил.
+            </div>
+            <h2>Систем за пополнување на анкети</h2>
+            <p>Имате вкупно @string.Format("{0}", Model.Count()) анкети за пополнување</p>
+            <p style="color: blue; font-size: 12px;">Сите проблеми со системот за анкетирање, пријавете ги на системот help.students.finki.ukim.mk, во делот Студентски анкети.</p>
+        </div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-6 col-md-4 metro-tile">
+            <div class="thumbnail tile @string.Format("{0}", item.IsRequired == true ? "tile-belize-hole" : "tile-blue")">
+                <a href="@Url.Action("Survey", new { id = item.Id })">
+                    <h3>@item.Name</h3>
+                    <h5>предмет: @item.CourseName</h5>
+                    <h5>професор: @item.TeacherNameSurname</h5>
+                    <h6>статус: @string.Format("{0}",item.IsRequired == true ? "задолжителна":"опционална")</h6>
+                </a>
+            </div>
+        </div>
+    }
+</div>
+

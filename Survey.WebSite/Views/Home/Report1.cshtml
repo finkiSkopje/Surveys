@@ -1,0 +1,51 @@
+﻿@model Survey.WebSite.Models.Report1Model
+
+@{
+    ViewBag.Title = "Извештај";
+}
+
+@Html.Partial("../Shared/_AdminMenu")
+
+<h2>Извештај на застапеност</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="inner-content">
+            @using (Html.BeginForm("Report1", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-inline">
+                    @Html.DropDownList("SemesterTypes", null, String.Empty, new { @class = "form-control" })
+                    @Html.DropDownList("Years", null, String.Empty, new { @class = "form-control" })
+                    <input type="submit" class="btn btn-primary" value="Барај" />
+                </div>
+                <hr />
+            }
+            <div class="jumbotron sub-menu">
+                <span>генерирани:&nbsp;</span><span><b>@Model.list.Sum(x => x.Generated)</b></span>&nbsp;&nbsp;&nbsp;<span>одговорени:&nbsp;</span><span><b>@Model.list.Sum(x => x.Answered)</b></span>
+            </div>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th>#</th>
+                    <th>Код</th>
+                    <th>Предмет</th>
+                    <th>Генерирани</th>
+                    <th>Одговорени</th>
+                </tr>
+                @{int num = 0;
+                foreach (var item in Model.list)
+                {
+                    <tr>
+                        <td>@(++num)</td>
+                        <td>@item.Code</td>
+                        <td>@item.Name</td>
+                        <td>@item.Generated</td>
+                        <td>@item.Answered</td>
+                    </tr>
+                }
+                }
+            </table>
+
+        </div>
+    </div>
+</div>

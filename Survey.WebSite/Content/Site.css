@@ -1,0 +1,63 @@
+﻿body {
+    padding-top: 70px;
+    padding-bottom: 20px;
+    overflow-x: hidden;
+    background: url(../Images/bg-body.jpg) center top repeat-x #fbfbfb;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 100%;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.sub-menu{
+    padding: 10px !important;
+    font-size: 14px !important;
+}
+
+.sub-menu li {
+    margin-right: 10px;
+}
+
+.inner-content {
+    background-color: white;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D0D0D0;
+    -webkit-box-shadow: 0 0 8px #D0D0D0;
+    -moz-box-shadow: 0 0 8px #D0D0D0;
+    box-shadow: 0 0 8px #D0D0D0;
+}
